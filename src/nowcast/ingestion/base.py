@@ -28,7 +28,7 @@ class LandingResult:
 
 @dataclass
 class IngestorConfig:
-    raw_root: Path = Path("data/raw")
+    raw_root: Path = Path(__file__).resolve().parents[3] / "data" / "raw"
     max_retries: int = 3
     backoff_seconds: float = 2.0
     extra: dict = field(default_factory=dict)

@@ -14,6 +14,10 @@ Notes
   * v0 uses ONE point per region (the label city's coordinates). Regions are
     large, so later replace this with area-averaged values over the boundary.
 """
+
+REPO_ROOT = Path(__file__).resolve().parents[3]  # .../src/nowcast/ingestion/ -> repo root
+DEFAULT_REGIONS = REPO_ROOT / "config" / "regions.yml"
+
 from __future__ import annotations
 
 import argparse
@@ -87,7 +91,7 @@ class OpenMeteoIngestor(BaseIngestor):
         return payload
 
 
-def load_regions(path: str | Path = "config/regions.yml") -> list[dict]:
+def load_regions(path = DEFAULT_REGIONS):
     cfg = yaml.safe_load(Path(path).read_text())
     regions = cfg["regions"]
     missing = [r["id"] for r in regions if "lat" not in r or "lon" not in r]
@@ -96,8 +100,7 @@ def load_regions(path: str | Path = "config/regions.yml") -> list[dict]:
     return regions
 
 
-def backfill(start_year: int, end_year: int, regions_path: str = "config/regions.yml",
-             pause_seconds: float = 1.0) -> None:
+def backfill(start_year, end_year, regions_path = DEFAULT_REGIONS, pause_seconds = 1.0):
     regions = load_regions(regions_path)
     ingestor = OpenMeteoIngestor(regions=regions)
     for region in regions:
@@ -114,6 +117,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Backfill Open-Meteo daily weather")
     ap.add_argument("--start-year", type=int, default=2013)
     ap.add_argument("--end-year", type=int, default=date.today().year)
-    ap.add_argument("--regions", default="config/regions.yml")
+    ap.add_argument("--regions", default=DEFAULT_REGIONS)
     args = ap.parse_args()
     backfill(args.start_year, args.end_year, args.regions)
