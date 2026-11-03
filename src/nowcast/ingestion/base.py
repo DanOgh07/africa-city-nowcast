@@ -51,6 +51,10 @@ class BaseIngestor(ABC):
     def file_extension(self):
         return "bin"
 
+    def canonical_bytes(self, payload):
+        # Bytes used only for hashing/dedup. Override to ignore volatile fields.
+        return payload
+
     # ---- shared behaviour ---------------------------------------------------------
     def run(self, partition, **params):
         payload = self._with_retries(lambda: self.fetch(partition, **params))
@@ -71,7 +75,7 @@ class BaseIngestor(ABC):
                 time.sleep(delay)
 
     def _land(self, partition, payload, params):
-        digest = hashlib.sha256(payload).hexdigest()
+        digest = hashlib.sha256(self.canonical_bytes(payload)).hexdigest()
         folder = self.config.raw_root / self.source / partition
         folder.mkdir(parents=True, exist_ok=True)
         data_path = folder / f"{digest[:16]}.{self.file_extension()}"
