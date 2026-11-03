@@ -7,3 +7,6 @@ data/raw/*
 data/interim/*
 !data/interim/.gitkeep
 .env
+*.egg-info/
+build/
+dist/
