@@ -15,10 +15,6 @@ Notes
     large, so later replace this with area-averaged values over the boundary.
 """
 from __future__ import annotations
-
-REPO_ROOT = Path(__file__).resolve().parents[3]  # .../src/nowcast/ingestion/ -> repo root
-DEFAULT_REGIONS = REPO_ROOT / "config" / "regions.yml"
-
 import argparse
 import json
 import logging
@@ -35,6 +31,8 @@ from .base import BaseIngestor, IngestorConfig
 
 log = logging.getLogger(__name__)
 
+REPO_ROOT = Path(__file__).resolve().parents[3]  # .../src/nowcast/ingestion/ -> repo root
+DEFAULT_REGIONS = REPO_ROOT / "config" / "regions.yaml"
 ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
 LAG_DAYS = 7
 DAILY_VARIABLES = [
@@ -50,15 +48,20 @@ DAILY_VARIABLES = [
 class OpenMeteoIngestor(BaseIngestor):
     source = "open_meteo"
 
-    def __init__(self, config: IngestorConfig | None = None, regions: list[dict] | None = None):
+    def __init__(self, config = None, regions = None):
         super().__init__(config)
         self._coords = {r["id"]: (r["lat"], r["lon"]) for r in (regions or [])}
 
-    def file_extension(self) -> str:
+    def file_extension(self):
         return "json"
 
+    def canonical_bytes(self, payload):
+        body = json.loads(payload)
+        body.pop("generationtime_ms", None)  # changes on every request
+        return json.dumps(body, sort_keys=True, separators=(",", ":")).encode()
+
     # partition looks like "KEN-nairobi/2024"
-    def fetch(self, partition: str, **params) -> bytes:
+    def fetch(self, partition, **params):
         region_id, year_s = partition.split("/")
         year = int(year_s)
         lat, lon = self._coords[region_id]
