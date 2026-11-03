@@ -1,0 +1,145 @@
+# Single source of truth for the units of analysis.
+# NOTE: ground truth is published for counties/regions/governorates/provinces/states,
+# not cities. `label_city` is just a human-friendly label for the dominant city.
+# Units are intended to be ADM1 boundaries (confirm against GADM / geoBoundaries).
+
+defaults:
+  admin_level: 1
+  boundary_source: TODO   # gadm | geoboundaries -- decide in docs/decisions/0002-boundaries.md
+
+regions:
+  # ---------------- Kenya (KNBS Gross County Product, annual) ----------------
+  - id: KEN-nairobi
+    country_iso3: KEN
+    unit_type: county
+    unit_name: Nairobi
+    label_city: Nairobi
+    aliases: ["Nairobi City", "Nairobi County"]
+    ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
+  - id: KEN-mombasa
+    country_iso3: KEN
+    unit_type: county
+    unit_name: Mombasa
+    label_city: Mombasa
+    aliases: ["Mombasa City", "Mombasa County"]
+    ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
+  - id: KEN-nakuru
+    country_iso3: KEN
+    unit_type: county
+    unit_name: Nakuru
+    label_city: Nakuru
+    aliases: ["Nakuru City", "Nakuru County"]
+    ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
+  - id: KEN-kisumu
+    country_iso3: KEN
+    unit_type: county
+    unit_name: Kisumu
+    label_city: Kisumu
+    aliases: ["Kisumu City", "Kisumu County"]
+    ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
+
+  # ---------------- Morocco (HCP regional accounts, annual) ----------------
+  - id: MAR-casablanca-settat
+    country_iso3: MAR
+    unit_type: region
+    unit_name: Casablanca-Settat
+    label_city: Casablanca
+    aliases: ["Casablanca Settat", "Grand Casablanca"]
+    ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
+  - id: MAR-rabat-sale-kenitra
+    country_iso3: MAR
+    unit_type: region
+    unit_name: Rabat-Salé-Kénitra
+    label_city: Rabat
+    aliases: ["Rabat-Sale-Kenitra", "Rabat Salé Kénitra"]
+    ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
+  - id: MAR-tanger-tetouan-al-hoceima
+    country_iso3: MAR
+    unit_type: region
+    unit_name: Tanger-Tétouan-Al Hoceïma
+    label_city: Tangier
+    aliases: ["Tangier-Tetouan-Al Hoceima", "Tanger-Tetouan-Al Hoceima"]
+    ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
+  - id: MAR-fes-meknes
+    country_iso3: MAR
+    unit_type: region
+    unit_name: Fès-Meknès
+    label_city: Fès
+    aliases: ["Fez-Meknes", "Fes-Meknes"]
+    ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
+  - id: MAR-marrakech-safi
+    country_iso3: MAR
+    unit_type: region
+    unit_name: Marrakech-Safi
+    label_city: Marrakech
+    aliases: ["Marrakesh-Safi", "Marrakech Safi"]
+    ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
+
+  # ---------------- Egypt (MPED GDP by governorate, annual) ----------------
+  - id: EGY-cairo
+    country_iso3: EGY
+    unit_type: governorate
+    unit_name: Cairo
+    label_city: Cairo
+    aliases: ["Al Qahirah", "Cairo Governorate"]
+    ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
+  - id: EGY-giza
+    country_iso3: EGY
+    unit_type: governorate
+    unit_name: Giza
+    label_city: Giza
+    aliases: ["Al Jizah", "Giza Governorate"]
+    ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
+  - id: EGY-alexandria
+    country_iso3: EGY
+    unit_type: governorate
+    unit_name: Alexandria
+    label_city: Alexandria
+    aliases: ["Al Iskandariyah", "Alexandria Governorate"]
+    ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
+
+  # ---------------- South Africa (Stats SA provincial GDP, annual) ----------------
+  - id: ZAF-gauteng
+    country_iso3: ZAF
+    unit_type: province
+    unit_name: Gauteng
+    label_city: Johannesburg
+    aliases: ["Gauteng Province"]
+    ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
+  - id: ZAF-western-cape
+    country_iso3: ZAF
+    unit_type: province
+    unit_name: Western Cape
+    label_city: Cape Town
+    aliases: ["Western Cape Province"]
+    ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
+  - id: ZAF-kwazulu-natal
+    country_iso3: ZAF
+    unit_type: province
+    unit_name: KwaZulu-Natal
+    label_city: Durban
+    aliases: ["KwaZulu Natal", "KZN"]
+    ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
+
+  # ---------------- Nigeria (NBS state GDP -- THIN; see docs/data_sources.md) ----------------
+  - id: NGA-lagos
+    country_iso3: NGA
+    unit_type: state
+    unit_name: Lagos
+    label_city: Lagos
+    aliases: ["Lagos State"]
+    ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
+  - id: NGA-fct
+    country_iso3: NGA
+    unit_type: federal_capital_territory
+    unit_name: Federal Capital Territory
+    label_city: Abuja
+    aliases: ["FCT", "Abuja", "FCT Abuja"]
+    ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
+  - id: NGA-rivers
+    country_iso3: NGA
+    unit_type: state
+    unit_name: Rivers
+    label_city: Port Harcourt
+    aliases: ["Rivers State"]
+    ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
