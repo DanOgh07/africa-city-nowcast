@@ -28,7 +28,7 @@ def test_lands_once_and_is_idempotent(tmp_path):
         first = ing.run("KEN-nairobi/2023")
         second = ing.run("KEN-nairobi/2023")
     assert first.written and not second.written
-    assert "KEN-nairobi/2023" in str(first.path)
+    assert "KEN-nairobi/2023" in first.path.as_posix()
     url = m.call_args[0][0].full_url
     assert "archive-api.open-meteo.com" in url and "latitude=-1.286" in url
     assert "start_date=2023-01-01" in url and "end_date=2023-12-31" in url
