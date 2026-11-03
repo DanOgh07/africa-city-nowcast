@@ -38,21 +38,21 @@ class BaseIngestor(ABC):
     #: short unique name, used as the folder under data/raw/
     source: str = ""
 
-    def __init__(self, config: IngestorConfig | None = None):
+    def __init__(self, config):
         if not self.source:
             raise ValueError("Subclasses must set `source`")
         self.config = config or IngestorConfig()
 
     # ---- to implement per source -------------------------------------------------
     @abstractmethod
-    def fetch(self, partition: str, **params) -> bytes:
+    def fetch(self, partition, **params) -> bytes:
         """Return the raw payload for one partition (e.g. '2024-06' or 'KEN')."""
 
-    def file_extension(self) -> str:
+    def file_extension(self):
         return "bin"
 
     # ---- shared behaviour ---------------------------------------------------------
-    def run(self, partition: str, **params) -> LandingResult:
+    def run(self, partition, **params):
         payload = self._with_retries(lambda: self.fetch(partition, **params))
         return self._land(partition, payload, params)
 
@@ -70,7 +70,7 @@ class BaseIngestor(ABC):
                 )
                 time.sleep(delay)
 
-    def _land(self, partition: str, payload: bytes, params: dict) -> LandingResult:
+    def _land(self, partition, payload, params):
         digest = hashlib.sha256(payload).hexdigest()
         folder = self.config.raw_root / self.source / partition
         folder.mkdir(parents=True, exist_ok=True)
