@@ -14,6 +14,8 @@ regions:
     unit_type: county
     unit_name: Nairobi
     label_city: Nairobi
+    lat: -1.286
+    lon: 36.817
     aliases: ["Nairobi City", "Nairobi County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
   - id: KEN-mombasa
@@ -21,6 +23,8 @@ regions:
     unit_type: county
     unit_name: Mombasa
     label_city: Mombasa
+    lat: -4.043
+    lon: 39.668
     aliases: ["Mombasa City", "Mombasa County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
   - id: KEN-nakuru
@@ -28,6 +32,8 @@ regions:
     unit_type: county
     unit_name: Nakuru
     label_city: Nakuru
+    lat: -0.303
+    lon: 36.080
     aliases: ["Nakuru City", "Nakuru County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
   - id: KEN-kisumu
@@ -35,6 +41,8 @@ regions:
     unit_type: county
     unit_name: Kisumu
     label_city: Kisumu
+    lat: -0.092
+    lon: 34.768
     aliases: ["Kisumu City", "Kisumu County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
 
@@ -44,6 +52,8 @@ regions:
     unit_type: region
     unit_name: Casablanca-Settat
     label_city: Casablanca
+    lat: 33.573
+    lon: -7.589
     aliases: ["Casablanca Settat", "Grand Casablanca"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-rabat-sale-kenitra
@@ -51,6 +61,8 @@ regions:
     unit_type: region
     unit_name: Rabat-Salé-Kénitra
     label_city: Rabat
+    lat: 34.021
+    lon: -6.841
     aliases: ["Rabat-Sale-Kenitra", "Rabat Salé Kénitra"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-tanger-tetouan-al-hoceima
@@ -58,6 +70,8 @@ regions:
     unit_type: region
     unit_name: Tanger-Tétouan-Al Hoceïma
     label_city: Tangier
+    lat: 35.760
+    lon: -5.834
     aliases: ["Tangier-Tetouan-Al Hoceima", "Tanger-Tetouan-Al Hoceima"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-fes-meknes
@@ -65,6 +79,8 @@ regions:
     unit_type: region
     unit_name: Fès-Meknès
     label_city: Fès
+    lat: 34.033
+    lon: -5.000
     aliases: ["Fez-Meknes", "Fes-Meknes"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-marrakech-safi
@@ -72,6 +88,8 @@ regions:
     unit_type: region
     unit_name: Marrakech-Safi
     label_city: Marrakech
+    lat: 31.629
+    lon: -7.981
     aliases: ["Marrakesh-Safi", "Marrakech Safi"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
 
@@ -81,6 +99,8 @@ regions:
     unit_type: governorate
     unit_name: Cairo
     label_city: Cairo
+    lat: 30.044
+    lon: 31.236
     aliases: ["Al Qahirah", "Cairo Governorate"]
     ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
   - id: EGY-giza
@@ -88,6 +108,8 @@ regions:
     unit_type: governorate
     unit_name: Giza
     label_city: Giza
+    lat: 30.013
+    lon: 31.209
     aliases: ["Al Jizah", "Giza Governorate"]
     ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
   - id: EGY-alexandria
@@ -95,6 +117,8 @@ regions:
     unit_type: governorate
     unit_name: Alexandria
     label_city: Alexandria
+    lat: 31.200
+    lon: 29.919
     aliases: ["Al Iskandariyah", "Alexandria Governorate"]
     ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
 
@@ -104,6 +128,8 @@ regions:
     unit_type: province
     unit_name: Gauteng
     label_city: Johannesburg
+    lat: -26.204
+    lon: 28.047
     aliases: ["Gauteng Province"]
     ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
   - id: ZAF-western-cape
@@ -111,6 +137,8 @@ regions:
     unit_type: province
     unit_name: Western Cape
     label_city: Cape Town
+    lat: -33.925
+    lon: 18.424
     aliases: ["Western Cape Province"]
     ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
   - id: ZAF-kwazulu-natal
@@ -118,6 +146,8 @@ regions:
     unit_type: province
     unit_name: KwaZulu-Natal
     label_city: Durban
+    lat: -29.859
+    lon: 31.022
     aliases: ["KwaZulu Natal", "KZN"]
     ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
 
@@ -127,6 +157,8 @@ regions:
     unit_type: state
     unit_name: Lagos
     label_city: Lagos
+    lat: 6.524
+    lon: 3.379
     aliases: ["Lagos State"]
     ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
   - id: NGA-fct
@@ -134,6 +166,8 @@ regions:
     unit_type: federal_capital_territory
     unit_name: Federal Capital Territory
     label_city: Abuja
+    lat: 9.077
+    lon: 7.399
     aliases: ["FCT", "Abuja", "FCT Abuja"]
     ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
   - id: NGA-rivers
@@ -141,5 +175,7 @@ regions:
     unit_type: state
     unit_name: Rivers
     label_city: Port Harcourt
+    lat: 4.815
+    lon: 7.049
     aliases: ["Rivers State"]
     ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
