@@ -14,11 +14,10 @@ Notes
   * v0 uses ONE point per region (the label city's coordinates). Regions are
     large, so later replace this with area-averaged values over the boundary.
 """
+from __future__ import annotations
 
 REPO_ROOT = Path(__file__).resolve().parents[3]  # .../src/nowcast/ingestion/ -> repo root
 DEFAULT_REGIONS = REPO_ROOT / "config" / "regions.yml"
-
-from __future__ import annotations
 
 import argparse
 import json
