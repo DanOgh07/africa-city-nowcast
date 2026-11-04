@@ -16,6 +16,7 @@ regions:
     label_city: Nairobi
     lat: -1.286
     lon: 36.817
+    dose_name: "Nairobi"
     aliases: ["Nairobi City", "Nairobi County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
   - id: KEN-mombasa
@@ -25,6 +26,7 @@ regions:
     label_city: Mombasa
     lat: -4.043
     lon: 39.668
+    dose_name: "Mombasa"
     aliases: ["Mombasa City", "Mombasa County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
   - id: KEN-nakuru
@@ -34,6 +36,7 @@ regions:
     label_city: Nakuru
     lat: -0.303
     lon: 36.080
+    dose_name: "Nakuru"
     aliases: ["Nakuru City", "Nakuru County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
   - id: KEN-kisumu
@@ -43,6 +46,7 @@ regions:
     label_city: Kisumu
     lat: -0.092
     lon: 34.768
+    dose_name: "Kisumu"
     aliases: ["Kisumu City", "Kisumu County"]
     ground_truth: {source: knbs_gcp, cadence: annual, status: confirmed}
 
@@ -54,6 +58,7 @@ regions:
     label_city: Casablanca
     lat: 33.573
     lon: -7.589
+    dose_name: "Casablanca-Settat"
     aliases: ["Casablanca Settat", "Grand Casablanca"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-rabat-sale-kenitra
@@ -63,6 +68,7 @@ regions:
     label_city: Rabat
     lat: 34.021
     lon: -6.841
+    dose_name: "Rabat-Salé-Kénitra"
     aliases: ["Rabat-Sale-Kenitra", "Rabat Salé Kénitra"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-tanger-tetouan-al-hoceima
@@ -72,6 +78,7 @@ regions:
     label_city: Tangier
     lat: 35.760
     lon: -5.834
+    dose_name: "Tanger-Tétouan-Al Hoceima"
     aliases: ["Tangier-Tetouan-Al Hoceima", "Tanger-Tetouan-Al Hoceima"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-fes-meknes
@@ -81,6 +88,7 @@ regions:
     label_city: Fès
     lat: 34.033
     lon: -5.000
+    dose_name: "Fès-Meknès"
     aliases: ["Fez-Meknes", "Fes-Meknes"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
   - id: MAR-marrakech-safi
@@ -90,6 +98,7 @@ regions:
     label_city: Marrakech
     lat: 31.629
     lon: -7.981
+    dose_name: "Marrakech-Safi"
     aliases: ["Marrakesh-Safi", "Marrakech Safi"]
     ground_truth: {source: hcp_regional_accounts, cadence: annual, status: confirmed}
 
@@ -101,6 +110,7 @@ regions:
     label_city: Cairo
     lat: 30.044
     lon: 31.236
+    dose_name: "Al Qahirah"
     aliases: ["Al Qahirah", "Cairo Governorate"]
     ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
   - id: EGY-giza
@@ -110,6 +120,7 @@ regions:
     label_city: Giza
     lat: 30.013
     lon: 31.209
+    dose_name: "Al Jizah"
     aliases: ["Al Jizah", "Giza Governorate"]
     ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
   - id: EGY-alexandria
@@ -119,6 +130,7 @@ regions:
     label_city: Alexandria
     lat: 31.200
     lon: 29.919
+    dose_name: "Al Iskandariyah"
     aliases: ["Al Iskandariyah", "Alexandria Governorate"]
     ground_truth: {source: mped_governorate_gdp, cadence: annual, status: verify_year_range}
 
@@ -130,6 +142,7 @@ regions:
     label_city: Johannesburg
     lat: -26.204
     lon: 28.047
+    dose_name: "Gauteng"
     aliases: ["Gauteng Province"]
     ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
   - id: ZAF-western-cape
@@ -139,6 +152,7 @@ regions:
     label_city: Cape Town
     lat: -33.925
     lon: 18.424
+    dose_name: "Western Cape"
     aliases: ["Western Cape Province"]
     ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
   - id: ZAF-kwazulu-natal
@@ -148,6 +162,7 @@ regions:
     label_city: Durban
     lat: -29.859
     lon: 31.022
+    dose_name: "Kwazulu-Natal"
     aliases: ["KwaZulu Natal", "KZN"]
     ground_truth: {source: statssa_provincial_gdp, cadence: annual, status: confirmed}
 
@@ -159,8 +174,9 @@ regions:
     label_city: Lagos
     lat: 6.524
     lon: 3.379
+    dose_name: null
     aliases: ["Lagos State"]
-    ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
+    ground_truth: {source: lbs_quarterly_gdp, cadence: quarterly, status: validation_only}
   - id: NGA-fct
     country_iso3: NGA
     unit_type: federal_capital_territory
@@ -168,8 +184,9 @@ regions:
     label_city: Abuja
     lat: 9.077
     lon: 7.399
+    dose_name: "Federal Capital Territory"
     aliases: ["FCT", "Abuja", "FCT Abuja"]
-    ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
+    ground_truth: {source: nbs_state_gdp, cadence: annual, status: provisional_2013_2017}
   - id: NGA-rivers
     country_iso3: NGA
     unit_type: state
@@ -177,5 +194,6 @@ regions:
     label_city: Port Harcourt
     lat: 4.815
     lon: 7.049
+    dose_name: "Rivers"
     aliases: ["Rivers State"]
-    ground_truth: {source: nbs_state_gdp, cadence: annual, status: patchy_audit_needed}
+    ground_truth: {source: nbs_state_gdp, cadence: annual, status: provisional_2013_2017}
