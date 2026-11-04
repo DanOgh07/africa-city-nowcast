@@ -11,3 +11,5 @@ data/interim/*
 build/
 dist/
 spot-check.py
+spot-check.ipynb
+DOSE_V2.csv
