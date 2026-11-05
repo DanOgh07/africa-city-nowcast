@@ -64,7 +64,7 @@ def build_silver(df, regions, start_year = START_YEAR):
     out = out[out["year"] >= start_year].copy()
 
     n_rows = out.groupby("GID_1")["year"].transform("size")
-    out = out[n_rows >= 2].copy()   # drop retired-boundary units that only overlap 2013
+    out = out[n_rows >= 2].copy()   # Drop retired-boundary units that only overlap 2013
 
     focus = {r["dose_gid1"]: r["id"] for r in regions if r.get("dose_gid1")}
     out["region_id"] = out["GID_1"].map(focus)
