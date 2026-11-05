@@ -30,6 +30,7 @@
 - [x] Rounding: Egypt full precision; Nigeria 100% and South Africa 89% of rows rounded to <=3 significant digits; Kenya 19% -> 60% (2013 -> 2017); Morocco 15-25%. Noise floor ~0.2-1 pt on growth
 - [ ] Kenya: why does the rounded share rise from 2013 to 2017? Check county growth for 2016-2017 before relying on it
 - [ ] Download official series (KNBS, HCP, Stats SA, MPED) and compare against DOSE on overlapping years
+- [ ] VIIRS: confirm EOG download access, V2.1 vs V2.2 coverage, NASA VNP46A3 start date.
 
 ## DOSE processing rules
 
@@ -45,4 +46,4 @@ Implemented in `src/nowcast/transforms/dose.py`.
 
 ## Feature sources (Phase 1+)
 
-VIIRS night lights, Open-Meteo weather, OSM/Overture, FX/commodities, GDELT.
+VIIRS night lights: annual VNL v2.x from 2013 (public domain; check V2.1/V2.2 splice); monthly cloud-free composites only from Jan 2014 (Egypt needs these for Jul-Jun fiscal years: full years from FY2015); EOG free account may be required. Also: Open-Meteo weather (done), OSM/Overture, FX/commodities, GDELT.
